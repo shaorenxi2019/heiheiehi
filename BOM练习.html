@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul id="Box">
+			<li>朱国伟说：你办事吗？</li>
+		</ul>
+	</div>
+	<div>
+		留言者：<input id="say" type="text" ><br>
+		留言内容：<textarea id="content"></textarea><br>
+	</div>
+	<input id="btn01" type="button" value="留言" onclick="add()" >
+</body>
+</html>
+<script>
+	// document.getElementById("btn01").onclick=function(){
+	// 	var Box = document.getElementById("Box");
+		//孩子节点
+		//console.log(Box.childNodes.length);
+		//console.log(Box.childNodes[1].innerHTML);
+		//父亲
+		//console.log(Box.parentNode.id);
+		//第一个孩子
+		//console.log(Box.firstChild.innerHTML);
+		//最后一个孩子
+		//console.log(Box.lastChild.innerHTML);
+		//同胞
+		// console.log(Box.firstChild.nextSibling.innerHTML);
+		// console.log(Box.lastChild.previousSibling.innerHTML);
+		// console.log(Box.firstElementChild.innerHTML);
+		// console.log(Box.lastElementChild.innerHTML);
+		// console.log(Box.firstElementChild.nextElementSibling.innerHTML);
+		// var d= document.createElement("li");
+		// document.getElementById("Box").appendChild(d);
+		// var d1=document.createTextNode("第四个li");
+		// d.appendChild(d1)
+
+	//}
+		function add(){
+			var d = $("say").value+"说 "+$("content").value;
+			var add= document.createElement("li");
+			add.innerHTML=d;
+			$("Box").appendChild(add);
+
+
+
+			function $(id){
+				return document.getElementById(id);
+			}
+		}
+</script>

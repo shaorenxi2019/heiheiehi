@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<img id="imgId" src="img/1.jpg"  />
+</body>
+</html>
+<script>
+	function $(id){
+		return document.getElementById(id);
+	}
+	// window.onload=function(){
+	// 	$("but1").onclick=function(){
+	// 		alert(this.value);
+	// 	}
+	// }
+	window.onload = function(){
+		$("imgId").onmousedown = function(){
+			this.src = "img/2.jpg";
+		};
+		$("imgId").onmouseup = function(){
+			this.src = "img/1.jpg";
+		};
+	}
+</script>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="测试" onclick="testf()">
+</body>
+</html>
+<script>
+	function testf(){
+	var arr1 = [-12,23,-34,45,-56,67];
+var arr2 = arr1.filter(eqZero); //过滤掉所有小于等于0的数，留下大于0的数
+function eqZero(num){
+return num>0;
+}
+</script>

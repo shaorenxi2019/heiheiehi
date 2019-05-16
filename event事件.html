@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{
+		margin:0;
+		padding:0;
+	}
+	#box{
+		width:500px;
+		/*border:1px solid pink;*/
+	}
+</style>
+</head>
+<body>
+	留言列表：
+	<hr/>
+	<div id="box">
+
+	</div>
+	<hr/>
+	留言:<textarea id="liuyanId" rows="10" cols="50"></textarea>
+	<br/>
+	<input id="btn01" type="button" value="发表" />
+	<input name="sendKey" type="radio" checked="checked" />ctrl+enter发送
+	<input name="sendKey" type="radio" />enter发送
+</body>
+</html>
+<script>
+	function $(id){
+		return document.getElementById(id);
+	}
+	function send(){
+		$("box").innerHTML += $("liuyanId").value+"<br>";
+	}
+	window.onload = function(){
+		$("btn01").onclick = function(){
+			send();
+		}
+	}
+	$("liuyanId").onkeydown = function(event){
+		var evt = event || window.event;
+		var radios = document.getElementsByName("sendKey");
+		if (radios[0].checked) {
+			if (evt.ctrlkey==true && keyCode==13) {
+				send();
+			}
+			}else{
+				if (evt.keyCode==13) {
+					send();
+			}
+		}
+	}
+</script>

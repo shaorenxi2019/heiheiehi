@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#ball{
+			position: absolute;
+			left:100px;
+			top:50px;
+			height: 20px;
+			width: 20px;
+			background-color: red;
+			border-radius: 50%;
+		}
+	</style>
+</head>
+<body style="height: 1000px">
+	<input id="btnGo" type="button" value="动起来" />
+	<div id="ball">
+
+	</div>
+</body>
+</html>
+<script>
+	function $(str) {
+	if(str.charAt(0)=='#'){
+		return document.getElementById(str.substring(1));
+	}else if(str.charAt(0)=='.'){
+		return document.getElementsByClassName(str.substring(1));
+	}else{
+		return document.getElementsByTagName(str);
+	}
+}
+
+
+function Ball(width,height,color,left,top1,leftStep,topStep,leftDirection,topDirection,timeSpace){
+	this.width=width;
+	this.height=height;
+	this.color=color;
+	this.left=left;
+	this.top=top1;
+	this.leftStep=leftStep;
+	this.topStep=topStep;
+	this.leftDirection=leftDirection;
+	this.topDirection=topDirection;
+	this.timeSpace = timeSpace;
+}
+
+Ball.prototype.go = function(){
+	setInterval(()=>{
+		//数据处理
+		this.left = this.left+this.leftStep*this.leftDirection;
+		this.top = this.top+this.topStep*this.topDirection;
+		//边界处理
+		var clientWidth = document.documentElement.clientWidth||document.body.clientWidth;
+		var clientHeight = document.documentElement.clientHeight||document.body.clientHeight;
+
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+		if(this.left<=scrollLeft){
+			this.left = scrollLeft
+			this.leftDirection = 1;
+		}else if(this.left>= clientWidth-this.width + scrollLeft){	
+			this.left = clientWidth-this.width + scrollLeft
+			this.leftDirection = -1;
+		}
+
+		if(this.top<=0+scrollTop){
+			this.top = 0+scrollTop;
+			this.topDirection = 1;
+		}else if(this.top>=clientHeight-this.height+scrollTop){
+			this.top = clientHeight-this.height+scrollTop;
+			this.topDirection = -1;
+		}
+		//改变外观
+		$("#ball").style.left=this.left+"px";
+		$("#ball").style.top=this.top+"px";
+	},this.timeSpace)
+}
+	window.onload = function(){
+		$("#btnGo").onclick = function(){
+			var d = new Ball(100,100,"green",10,10,1,1,1,1,10)
+			d.go();
+		}
+	}
+</script>

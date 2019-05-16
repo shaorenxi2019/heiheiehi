@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	用户名：<input id="userId" type="text"/><span></span><br/>
+	邮政编码<input id="postId" type="text"/><span></span><br/>
+	邮箱<input id="emailId" type="text"/><span></span><br/>
+	手机号码：<input id="phoneId" type="text"/><span></span><br/>
+	身份证号码：<input id="cardId" type="text"/><span></span><br/>
+	出生日期：<input id="birthdayId" type="text"/><span></span><br/>
+	ip：<input id="ipId" type="text"/><span></span><br/>
+</body>
+</html>
+<script>
+	function $(id){
+		return document.getElementById(id);
+	}
+	window.onload = function(){
+		$("userId").onblur = function(){
+			var reg = /^[a-zA-Z_][a-zA-Z0-9_]{5,15}$/;
+			if (reg.test(this.value)==true){
+				this.nextElementSibling.innerHTML = "√";
+			}else{
+				this.nextElementSibling.innerHTML = "×";
+			}
+		}
+		$("postId").onblur = function(){
+			var reg = /^[1-9]\d{5}$/;
+			if (reg.test(this.value)==true){
+				this.nextElementSibling.innerHTML = "√";
+			}else{
+				this.nextElementSibling.innerHTML = "×";
+			}
+		}
+		$("emailId").onblur = function(){
+			var reg = /^\w{3,}@\w{2,}\.(com|cn|net|cn)$/;
+			if (reg.test(this.value)==true){
+				this.nextElementSibling.innerHTML = "√";
+			}else{
+				this.nextElementSibling.innerHTML = "×";
+			}
+		}
+		$("cardId").onblur = function(){
+			var reg = /^[1-9]\d{16}(\d|X)$/i;
+			if (reg.test(this.value)==true){
+				this.nextElementSibling.innerHTML = "√";
+			}else{
+				this.nextElementSibling.innerHTML = "×";
+			}
+		}
+	}
+</script>

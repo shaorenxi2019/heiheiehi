@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#t,td{
+			width: 500px;
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<table id="t">
+		<tr>
+			<td>书号</td>
+			<td>书名</td>
+			<td>价格</td>
+			<td>操作</td>
+		</tr>
+		<tr>
+			<td>001</td>
+			<td>三国演义</td>
+			<td>50</td>
+			<td>
+			<input type="button" value="删除" onclick="deleteSelf(this)">
+			</td>
+		</tr>
+	</table>
+	书号<input id="bookId" type="text" value="001"><br>
+	书名<input id="bookname" type="text" value="红楼梦"><br>
+	价格<input id="bookprice" type="number" value="52"><br>
+	<input type="button" value="添加" onclick="addRow()" >
+</body>
+</html>
+<script>
+// 	function addRow(){
+// 		var d = document.getElementById("t")
+// 		var w = d.insertRow();
+
+// 		var cell01 = w.insertCell();
+// 		cell01.innerHTML = "第三行第一列";
+// 		var cell02 = w.insertCell();
+// 		cell02.innerHTML = "第三行第二列";
+// 		var cell03 = w.insertCell();
+// 		cell03.innerHTML = "第三行第三列";
+// }
+// 	function deleteRow(){
+// 		if (confirm("亲，你确定要删除吗？")) {
+// 			var q = document.getElementById("t");
+// 			q.rows[0].deleteCell(0);
+// 		}
+// }
+	function $(id){
+		return document.getElementById(id);
+	}
+	function deleteSelf(obj){
+		if (confirm("亲！真的要删除吗？")) {
+		 var t = document.getElementById("t")	
+		obj.parentNode.parentNode.remove();
+		}
+	}
+	function addRow(){
+		var d = document.getElementById("t")
+		var w = d.insertRow();
+
+		var cell01 = w.insertCell();
+		cell01.innerHTML = $("bookId").value;
+		var cell02 = w.insertCell();
+		cell02.innerHTML = $("bookname").value;
+		var cell03 = w.insertCell();
+		cell03.innerHTML = $("bookprice").value;
+		var cell04 = w.insertCell();
+		cell04.innerHTML ='<input type="button" value="删除" onclick="deleteSelf(this)" >';
+	}
+</script>

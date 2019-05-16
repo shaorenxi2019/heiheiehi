@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="myli">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
+<script>
+	function B(){
+		this.a = 1000;
+		this.b = 5000;
+	}
+	B.prototype.getX = function(){
+		console.log(this.b)
+	}
+
+	function C(){
+		this.a = 1000
+	}
+	C.prototype = new B();
+	C.prototype.constructor = C;
+	var b = new C()
+	console.log(b)
+</script>

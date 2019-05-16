@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+	function map(arr){
+		for(var i=0;i<arr.length;i++){
+			arr[i]=arr[i]*(1+0.3)
+		}
+		return arr
+	}
+	window.onload = function(){
+		var a = [1,2,3,4]
+		console.log(map(a))
+	}
+
+
+	// console.log(map([1,2,2,3]))
+</script>
